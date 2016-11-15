@@ -25,6 +25,9 @@ std::vector<T> generate_geometric_samples(std::size_t sample_number,
                                           T common_ratio) {
   static_assert(std::is_arithmetic<T>::value, "not arithmetic type");
   std::vector<T> v(sample_number);
+  T n = {1};
+  std::generate(v.begin(), v.end(), [&n, &common_ratio] { n = n * common_ratio; return n; });
+
   return v;
 }
 

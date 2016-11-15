@@ -24,14 +24,14 @@ void err_asan()
   buf[10] = 42;
 
   // use after free
-  int *k = fetch_mem();
-  k[5] = 10;
+  // int *k = fetch_mem();
+  // k[5] = 10;
 
   // // double free
-  int *l = new int[3];
+  // int *l = new int[3];
   l[2] = 2;
   delete[] l;
-  delete[] l;
+  // delete[] l;
 
   // memory loss
   int *m = new int[1024];
@@ -43,7 +43,7 @@ void err_stack_protect(const char* str)
 {
 #ifdef DO_ERROR_STACK_PROTECTOR
   char buf[16];
-  std::strcpy(buf, str);
+  // std::strcpy(buf, str);
   std::cout << buf << std::endl;
 #endif // DO_ERROR_STACK_PROTECTOR
 }
